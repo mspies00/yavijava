@@ -8,6 +8,10 @@ plugins {
     id 'signing'
 }
 
+group = "com.toastcoders"
+archivesBaseName = "yavijava"
+version = '6.0.05-jakarta'
+
 targetCompatibility = 11
 sourceCompatibility = 1.8
 
@@ -37,6 +41,10 @@ sourceSets {
 
     main {
         java {
+        }
+        resources {
+            srcDir '.'
+            include 'License.txt'
         }
     }
 
@@ -86,6 +94,19 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
 }
 
+jar {
+    manifest {
+        attributes(
+            'Build-Timestamp'        : new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+            'Created-By'             : "Gradle ${gradle.gradleVersion}",
+            'Build-Jdk'              : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+            'Implementation-Title'   : "YAVI Java API",
+            'Implementation-Version' : "${version}",
+            'Implementation-URL'     : "https://github.com/mspies00/yavijava"   
+        )
+    }
+}
+
 artifacts {
     archives javadocJar, sourcesJar
 }
@@ -93,12 +114,12 @@ artifacts {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = 'yavijava'
-            groupId = 'com.toastcoders'
-            version = '6.0.05-jakarta'
+            artifactId = '${archivesBaseName}'
+            groupId = '${group}'
+            version = '${version}'
             from components.java
             pom {
-                name = 'yavijava'
+                name = '${archivesBaseName}'
                 // optionally artifactId can be defined here
                 description = 'Java library for VMware vSphere'
                 url = 'https://github.com/mspies00/yavijava'
