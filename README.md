@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/yavijava/yavijava.svg?branch=gradle)](https://travis-ci.org/yavijava/yavijava)
-[![Join the chat at https://gitter.im/yavijava/yavijava](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/yavijava/yavijava?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Welcome to the YAVI Java API
 
@@ -25,8 +23,7 @@ directly. The API itself is straight-forward and easy to learn and use.
 ## WHO CREATED THE API?
 To find out more about the original VI Java API see http://vijava.sf.net
 
-As for who created this fork called YAVI Java that is Michael Rice.
-
+As for who created the fork called YAVI Java that is Michael Rice.
 
 ## Whats with the name?
 
@@ -35,6 +32,9 @@ github because the project seemd stale and I felt it needed new life. I wanted t
 like GitHub, custom http clients, and logging, and tests as well as other stuff so I decided to 
 fork the project and do it.
 
+## What is this fork about 
+This fork was created to cooperate with the Jakarta XML Bind API and Java 11. 
+
 
 ## Do I have to change my code to use this?
 
@@ -42,12 +42,20 @@ No!! This is a drop in replacement and requires no code modification, but does i
 dependencies (Always check the build.gradle for the latest requirements):
 
     dependencies {
-        compile 'org.apache.directory.studio:org.dom4j.dom4j:1.6.1'
-        compile 'log4j:log4j:1.2.17'
-        compile 'org.apache.httpcomponents:httpclient:4.3.5'
-        testCompile 'org.mockito:mockito-all:1.9.5'
-        testCompile group: 'junit', name: 'junit', version: '4.+'
+        implementation 'org.apache.directory.studio:org.dom4j.dom4j:1.6.1'
+        implementation 'log4j:log4j:1.2.17'
+        implementation 'org.apache.httpcomponents:httpclient:4.3.5'
+        implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
+        compileOnly 'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'    
+        testImplementation 'javax.servlet:javax.servlet-api:3.1.0'
+        testImplementation 'junit:junit-dep:4.11'
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.spockframework:spock-core:0.7-groovy-2.0'
+        testImplementation 'cglib:cglib-nodep:3.1'
+        testImplementation 'org.objenesis:objenesis:2.1'
     }
+
 
 ## WHERE CAN I GET HELP?
 File a bug: https://github.com/yavijava/yavijava/issues

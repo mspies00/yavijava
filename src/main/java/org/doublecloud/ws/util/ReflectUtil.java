@@ -36,7 +36,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 public class ReflectUtil {
 

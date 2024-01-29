@@ -37,7 +37,7 @@ import org.doublecloud.ws.util.ReflectUtil;
 import org.doublecloud.ws.util.TypeUtil;
 import org.doublecloud.ws.util.XmlUtil;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
